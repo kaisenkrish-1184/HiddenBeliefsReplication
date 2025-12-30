@@ -25,7 +25,7 @@ Users working with **post-2024 WRDS extracts** may need to make minor adjustment
 - **Compustat Fundamentals Quarterly**
   - `gvkey`, `datadate`, `conm`, `naics`, `atq`, `seqq`, `ceqq`, `cheq`,
     `cogsq`, `cshoq`, `dlcq`, `dlttq`, `niq`, `revtq`, `xintq`, `xsgaq`,
-    `dvpspq`, `dvpsxq`, `mkvaltq`, `prclq`, and standard Compustat identifiers
+    `dvpspq`, `dvpsxq`, `mkvaltq`, `prclq`
 
 - **Fama–French 5 Factors + Momentum**
 
