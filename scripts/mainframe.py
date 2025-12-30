@@ -28,19 +28,19 @@ import Fourteen_cleaningMissingChars as cmc
 import Fifteen_winsorize_data as wd
 import Sixteen_control_variable_construction as cvc
 
-FOLDER = 'gravesReplication'
+FOLDER = 'replication'
 
 # Step flags - Set to True to run, False to skip
-RUN_FIRST_MERGEKEYS = False
-RUN_SECOND_MERGEKEYS = False
-RUN_CRSP_MERGE = False
-RUN_FIRM_CHARACTERISTICS = False
-RUN_VARIANCE_AND_BETA = False
-RUN_VSD_AND_BETA = False
-RUN_RIGID_DYNAMIC = False
-UNIVERSE_CREATOR = False
-BUILD_CONSIDERATION_SETS = False
-FILTER_CONSIDERATION_SETS = False
+RUN_FIRST_MERGEKEYS = True
+RUN_SECOND_MERGEKEYS = True
+RUN_CRSP_MERGE = True
+RUN_FIRM_CHARACTERISTICS = True
+RUN_VARIANCE_AND_BETA = True
+RUN_VSD_AND_BETA = True
+RUN_RIGID_DYNAMIC = True
+UNIVERSE_CREATOR = True
+BUILD_CONSIDERATION_SETS = True
+FILTER_CONSIDERATION_SETS = True
 BUILD_CONSIDERATION_PANEL = True
 REMOVE_ALL_DELISTED = True
 APPEND_RIGID_MANAGERS = True
@@ -51,7 +51,7 @@ CONTROL_VARIABLE = True
 
 # Step 0: First Merge Keys (PERMNO)
 if RUN_FIRST_MERGEKEYS:
-    result_df, summary = zm.merge_keys(f'{FOLDER}/13f_holdings.parquet', f'data/names.csv', FOLDER)
+    result_df, summary = zm.merge_keys(f'{FOLDER}/13f_holdings.parquet', f'{FOLDER}/names.csv', FOLDER)
     print("Step 0 completed - PERMNO merged")
 
 # Step 1: Second Merge Keys (GVKEY)
@@ -59,7 +59,7 @@ if RUN_SECOND_MERGEKEYS:
     # Ensure result_df is loaded
     if 'result_df' not in locals():
         result_df = pd.read_parquet(f'{FOLDER}/13F_1stMerge.parquet')
-    result_df, summary = mk.merge_keys(result_df, f'data/GVKEY_link.csv', FOLDER)
+    result_df, summary = mk.merge_keys(result_df, f'{FOLDER}/GVKEY_link.csv', FOLDER)
     print("Step 1 completed - GVKEY merged")
 
 # Step 2: CRSP Merge
@@ -104,7 +104,7 @@ if RUN_RIGID_DYNAMIC:
 
 # Step Universe Creator
 if UNIVERSE_CREATOR:
-    universe = uc.merge_keys(f'{FOLDER}/crsp_monthly.csv', f'data/GVKEY_link.csv', f'{FOLDER}/Universe')
+    universe = uc.merge_keys(f'{FOLDER}/crsp_monthly.csv', f'{FOLDER}/GVKEY_link.csv', f'{FOLDER}/Universe')
     universe, dailyReturns = uc.filter_crsp_and_clean_daily(universe, f'{FOLDER}/crsp_daily.csv', f'{FOLDER}/Universe')
     universe, summary = fc.add_firm_characteristics(universe, f'{FOLDER}/fundamentals_quarterly.parquet', f'{FOLDER}/Universe')
     variance_beta_df, summary = vb.calculate_variance_and_beta(universe, f'{FOLDER}/Universe/CRSP_daily_cleaned.csv', f'{FOLDER}/Universe')
