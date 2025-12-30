@@ -7,7 +7,7 @@ The paper can be accessed [here](https://yale.app.box.com/s/vlmkafxglm89f4cwra9e
 
 ### Note on WRDS formats
 This code is written using **legacy WRDS file formats**.  
-Users working with **post-2025 WRDS extracts** may need to make minor adjustments to variable names and file structure.
+Users working with **post-2024 WRDS extracts** may need to make minor adjustments to variable names and file structure.
 
 ---
 
