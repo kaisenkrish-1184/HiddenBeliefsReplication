@@ -4,7 +4,7 @@ import Eighteen_calculate_idiosyncratic_beliefs as ib
 import Nineteen_calculate_hidden_beliefs_index as hbi
 import Twenty_HBI_quintiles as ffa
 
-FOLDER = 'gravesReplication'    
+FOLDER = 'replication'    
 pre_regression_data = pd.read_parquet(f'{FOLDER}/regression_ready_dataframe.parquet', FOLDER)
 institution_demand_parameters = pd.read_parquet(f'{FOLDER}/institution_demand_parameters.parquet')
 
