@@ -40,7 +40,8 @@ import pandas as pd
 from scipy.optimize import minimize
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
-FOLDER = 'gravesReplication'
+## EDIT THIS TO YOUR FOLDER NAME
+FOLDER = 'replication'
 DEFAULT_INPUT = f"{FOLDER}/regression_ready_dataframe.parquet"
 WORKERS = 8
 TAU_START = 0.99
