@@ -10,7 +10,7 @@ Implements the three-step Sequential Censored Quantile Regression (SCQR) exactly
        β0(τ_next) = QR on J0 at τ_next
        J1 = {i : z_i' β0(τ_next) > Q_{0.005} ( {z_r' β0(τ_next) | z_r' β0(τ_next) > 0} ) }
        β(τ_next)  = QR on J1 at τ_next
-  4) Stop at τ = 0.50 (median). If J0 or J1 empty at any point => fail for that manager-quarter.
+  4) Stop at τ = 0.50 (median). If J0 or J1 empty at any point => fails to converge for that manager-quarter.
 
 Model:
     y = max(0, z'β + u),  z = [ 1, Log_Market_Cap, beta, Investment, Operating_Profitability,
@@ -27,10 +27,6 @@ Outputs:
   - demand_estimation_results.csv
   - demand_estimation_summary.csv
   - institution_demand_parameters.parquet
-
-Run example:
-  python3 scqr_section33.py --input regression_ready_dataframe.parquet \
-    --workers 16 --tau-start 0.98 --tau-end 0.50 --min-uncensored 100
 """
 
 from __future__ import annotations
@@ -44,9 +40,6 @@ import pandas as pd
 from scipy.optimize import minimize
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
-# ---------------------------
-# Config (CLI-overridable)
-# ---------------------------
 FOLDER = 'gravesReplication'
 DEFAULT_INPUT = f"{FOLDER}/regression_ready_dataframe.parquet"
 WORKERS = 8
