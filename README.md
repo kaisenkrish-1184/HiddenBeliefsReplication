@@ -9,6 +9,8 @@ Users must download data directly from WRDS and place it in:
 
 data/raw/
 
+UPDATE: This code is based around legacy files from WRDS. The code will have to be adjusted accordingly to acommadate the new format if needed. 
+
 These are the necessary data files
 - Thomson-Reuters 13F Files
 - CRSP Monthly Stock File
@@ -21,4 +23,11 @@ These are the necessary data files
 
 ## Estimating Hidden Beliefs
 
+1. This code was compiled via Google Cloud's compute engine.
+2. Once the necessary data has been downloaded, running mainframe.py from the replication folder will produce the necessary dataframe to run sequential-censored quantile regression (SCQR). This code will take a considerable amount of time based on the amount of data ran on. 
+3. Running scqr.py from the replication folder will produce the demand estimation results.
+4. Running fourFactorAlpha.py from the replication folder will produce esimates of four-factor alpha for 5 HBI quintiles by 10 size deciles. Finally, run table.py to produce a matplotlib table to neatly display the final results. 
+
 ## Results for 2022-24 Data (obtained by using data from 2019-24, due to historical holdings condition)
+
+1. The example folder contains necessary files from a test compilation that estimated HBI for 2022Q1-2024Q4. 
