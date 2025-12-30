@@ -5,6 +5,14 @@ This repository contains code to replicate empirical results of Daniel Graves’
 
 The paper can be accessed [here](https://yale.app.box.com/s/vlmkafxglm89f4cwra9ecav9nniyukyw).
 
+## Data
+
+This replication uses **CRSP, Compustat, and 13F data** accessed via **WRDS**.  
+Due to licensing restrictions, these data **cannot be redistributed**.
+
+Users must download the data directly from WRDS and place the files in:
+replication/
+
 ### Note on WRDS formats
 This code is written using **legacy WRDS file formats**.  
 Users working with **post-2024 WRDS extracts** may need to make minor adjustments to variable names and file structure.
