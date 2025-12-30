@@ -55,7 +55,7 @@ Users working with **post-2024 WRDS extracts** may need to make minor adjustment
    - Computes **annualized four-factor alphas**
 5. `Table.py` generates a formatted matplotlib table summarizing the final results.
 
-Hidden-belief portfolios are constructed following Graves (2023), using **returns averaged over the previous three quarters**.
+Hidden-belief portfolios are constructed following Graves (2025), using **returns averaged over the previous three quarters**.
 
 ---
 
